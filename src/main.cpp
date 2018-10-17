@@ -2,7 +2,7 @@
 #include "reel.h"
 #include <vector>
 #include <fstream>
-
+#include <sstream>
 
 using namespace std;
 
@@ -18,6 +18,7 @@ cout <<" 2) Afficher liste des réels "<<endl;
 cout <<" 3) Supprimer le premier réel ayant la valeur choisie "<<endl;
 cout <<" 4) Supprimer tous les réels ayant la valeur choisie "<<endl;
 cout <<" 5) Quitter "<<endl;
+
 
 vector <reel> Nombre;
 float tmp_nb;
@@ -57,14 +58,51 @@ cin >> select;
 	cout << ligne<< endl;
 	}
 	listreel.close();
+
 		}break;
 	case 3:{
+	float erasenb;
+	cin >> erasenb;
+	ifstream listreel("reels.txt", ios::in);
+	string ligne;
+	int i;
+	while(getline(listreel, ligne))
+	{
+
+	i++;
+	}
 
 		}break;
 	case 4:{
 
+	vector <reel> Nombre1;
+	float erasenbs;
+	cout << "entrez le nombre à supprimer :"<<endl;
+	cin >> erasenbs;
+	ifstream listreel("reels.txt", ios::in);
+	string ligne;
+	int i;
+	while(getline(listreel, ligne))
+	{
+	stringstream ss;
+	float f;
+	ss.str(ligne);
+	ss >> f;
+
+	if(f!=erasenbs){
+	Nombre1[i].nbreel=f;}
+	i++;
+	}
+	listreel.close();
+	ofstream newlist;
+	newlist.open("reels.txt");
+	for(i=0;i<Nombre1.size();i++){
+	Nombre1.push_back(reel());
+	newlist<<Nombre1[i].nbreel<<endl;
+	}
+	newlist.close();
 		}break;
-	case 5:{
+	case 5:{ exit(0);
 
 		}break;
 }
