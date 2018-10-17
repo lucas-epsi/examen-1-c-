@@ -29,11 +29,10 @@ cin >> select;
 
 	case 1:{
 
-	int i;
 	bool yes=true;
 	char choix;
-	ofstream listreel;
-	listreel.open("reels.txt");
+	ofstream listreel("reels.txt", ios::app);
+	int i=0;
 	do{
 	cout << "ajouter nouveau nombre? y/n " <<endl;
 	cin >> choix;
@@ -42,6 +41,7 @@ cin >> select;
 	cin>>tmp_nb;
 	Nombre.push_back(reel());
 	Nombre[i].nbreel = tmp_nb;
+	listreel<<Nombre[i].nbreel<<endl;
 	}else{yes=false;}
 	i++;
 	}while(yes==true);
@@ -49,7 +49,14 @@ cin >> select;
 
 		}break;
 	case 2:{
-
+	cout << " liste des nombres:" << endl;
+	ifstream listreel("reels.txt", ios::in);
+	string ligne;
+	while(getline(listreel, ligne))
+	{
+	cout << ligne<< endl;
+	}
+	listreel.close();
 		}break;
 	case 3:{
 
@@ -60,11 +67,12 @@ cin >> select;
 	case 5:{
 
 		}break;
+}
 	cout << endl;
 	cout << "revenir au menu de sélection?" <<endl;
 	cout <<"y/n"<<endl;
 	cin >> start;
-}
+
 	}while(start=='y' || start=='Y');
 
 return 0;
