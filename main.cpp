@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int main{
+int main(){
 
 char start;
 
@@ -28,21 +28,25 @@ cin >> select;
 	switch(select){
 
 	case 1:{
+
 	int i;
+	bool yes=true;
+	char choix;
 	ofstream listreel;
 	listreel.open("reels.txt");
 	do{
-	cout << "ajouter nouveau nombre?" <<endl;
+	cout << "ajouter nouveau nombre? y/n " <<endl;
 	cin >> choix;
 	if(choix=='y'||choix=='Y'){
 	cout<<"entrez nouveau nombre réel : "<<endl;
 	cin>>tmp_nb;
-	Nombre.pushback(reel());
-	Nombre[i].nbreel = tmp_nb; 
+	Nombre.push_back(reel());
+	Nombre[i].nbreel = tmp_nb;
 	}else{yes=false;}
 	i++;
 	}while(yes==true);
 	listreel.close();
+
 		}break;
 	case 2:{
 
@@ -57,10 +61,10 @@ cin >> select;
 
 		}break;
 	cout << endl;
-	cout << "revenir au menu de sélection? <<endl;
+	cout << "revenir au menu de sélection?" <<endl;
 	cout <<"y/n"<<endl;
 	cin >> start;
-
+}
 	}while(start=='y' || start=='Y');
 
 return 0;
